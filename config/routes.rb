@@ -1,17 +1,8 @@
 Rails.application.routes.draw do
-  root to: redirect('/product/index')
+  get 'pages/info'
+  
+  resources :categories
+  resources :products
 
-  get 'category/index'
-  get 'category/new'
-  get 'category/create'
-  get 'category/show'
-  get 'category/update'
-  get 'category/destroy'
-  get 'product/index'
-  get 'product/new'
-  get 'product/create'
-  get 'product/show'
-  get 'product/update'
-  get 'product/destroy'
-
+  root to: redirect('pages/info')
 end

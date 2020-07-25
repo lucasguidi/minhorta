@@ -18,7 +18,13 @@
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_area :state %>
+    <%= form.radio_button :state, true  %> ativo
+    <%= form.radio_button :state, false  %> inativo
+  </div>
+
+    <div class="select">
+    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: true %>
   </div>
 
   <div class="actions">

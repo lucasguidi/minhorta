@@ -1,0 +1,25 @@
+<h1>Categorias</h1>
+
+<%= link_to 'Criar categoria', new_category_path %>
+
+<table>
+    <tr>
+        <td>nome</td>
+        <td>status</td>
+        <td>editar</td>
+
+    </tr>
+    <% if @categories.blank? %>
+        <tr>
+            <td>não existem categorias</td>
+        </tr>
+    <% else %>
+        <% @categories.each do |category| %>
+            <tr>
+                <td><%= link_to category.name, category_path(category.id) %></td>
+                <td><%= category.state %></td>
+                <td><%= link_to 'Editar', edit_category_path(category.id)  %></td>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
