@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :get_category, only: %i(show update destroy)
+  before_action :get_category, only: %i(show update destroy edit)
 
   def index
     @categories = Category.all
@@ -18,6 +18,14 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    if @category.save
+      redirect_to category_path(@category)
+    else
+      render :new
+    end
+  end
+
   def show
   end
 
@@ -28,7 +36,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
+    @category.state = false
 
     redirect_to categories_path
   end

@@ -1,2 +1,15 @@
-<h1>Category#show</h1>
-<p>Find me in app/views/category/show.html.erb</p>
+<div class="row">
+
+  <div class="col-md-3">
+    <p><b>Name: </b><%= @category.name %></p>
+    <p><b>Description: </b><%= @category.description %></p>
+    <p><b>State: </b><%= @category.state %></p>
+    <p>
+      <%= link_to 'Edit', edit_category_path(@category) %> |
+      <%= link_to 'Destroy', @category, data: { confirm: 'Are you sure?' }, method: :delete %> |
+      <%= link_to 'Back', categories_path %>
+    </p>
+    <p><b>  </b>
+  </div>    
+</div>
+

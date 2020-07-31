@@ -1,4 +1,27 @@
-<h1>O que vou colher da minha horta hoje?</h1>
+<h1>Produtos</h1>
 
-<p>Aqui ficarão nossos produtos! Em breve...</p>
+<%= link_to 'Criar produto', new_product_path %>
 
+<table>
+    <tr>
+        <td>nome</td>
+        <td>status</td>
+        <td>category</td>
+        <td>editar</td>
+
+    </tr>
+    <% if @products.blank? %>
+        <tr>
+            <td>não existem produtos</td>
+        </tr>
+    <% else %>
+        <% @products.each do |product| %>
+            <tr>
+                <td><%= link_to product.name, product_path(product.id) %></td>
+                <td><%= product.state %></td>
+                <td><%= product.category.name %></td>
+                <td><%= link_to 'Editar', edit_product_path(product.id)  %></td>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
