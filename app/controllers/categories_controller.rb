@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :get_category, only: %i(show update destroy edit)
+  before_action :get_category, only: %i(show update destroy edit update_state)
 
   def index
     @categories = Category.all
@@ -19,11 +19,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    if @category.save
-      redirect_to category_path(@category)
-    else
-      render :new
-    end
   end
 
   def show
@@ -41,13 +36,17 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
-  def category_params
-    params.require(:category).permit(:name, :description, :state)
+  def update_state
+    @category.update(state: !@category.state)
   end
 
   private
 
   def get_category
     @category = Category.find(params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name, :description, :state)
   end
 end

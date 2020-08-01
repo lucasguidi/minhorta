@@ -2,12 +2,13 @@
 
 <h5><%= link_to 'Criar categoria', new_category_path %></h5>
 
-<table> 
-    <thead> 
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
             <th> Nome </th>
             <th> Status </th>
             <th> Editar </th>
+            <th> Desativar </th>
         </tr>
     </thead>
     <tbody> 
@@ -17,10 +18,16 @@
             </tr>
         <% else %>
             <% @categories.each do |category| %>
-                <tr>
+                <tr id = "<%= category.id%>">
                     <td><%= link_to category.name, category_path(category.id) %></td>
-                    <td><%= category.state %></td>
+                    <td class="state"><%= state(category.state) %></td>
                     <td><%= link_to 'Editar', edit_category_path(category.id)  %></td>
+                    <td class="state_link">
+                        <%= link_to change_state(category.state), 
+                            update_state_category_path(category.id), 
+                            method: :post, 
+                            remote: true %>
+                    </td>
                 </tr>
             <% end %>
         <% end %>

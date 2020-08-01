@@ -61,6 +61,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -72,6 +76,8 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.4)
@@ -102,6 +108,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     pg (1.2.3)
+    popper_js (1.16.0)
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.3)
@@ -206,8 +213,10 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bootstrap (~> 4.3.1)
   bootstrap-sass
   byebug
+  font-awesome-rails
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)

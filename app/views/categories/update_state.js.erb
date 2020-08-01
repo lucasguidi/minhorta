@@ -1,0 +1,7 @@
+$("tr#<%= @category.id %> td.state").text("<%= state(@category.state) %>")
+
+$("tr#<%= @category.id %> td.state_link").html("\
+    <%=j link_to change_state(@category.state), 
+            update_state_category_path(@category.id), 
+            method: :post, remote: true %>\
+")
