@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :get_product, only: %i(show update destroy edit)
+  before_action :get_product, only: %i(show update destroy edit update_state)
   
   def index
     @products = Product.all
@@ -35,6 +35,12 @@ class ProductsController < ApplicationController
 
     redirect_to products_path
   end
+
+  def update_state
+    @product.update(state: !@product.state)
+  end
+
+  private
 
   def product_params
     params.require(:product).permit(:name, :category_id, :state)

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       post :update_state
     end
   end
-  resources :products
+  resources :products do
+    member do
+      post :update_state
+    end
+  end
 
   root to: redirect('pages/info')
 end

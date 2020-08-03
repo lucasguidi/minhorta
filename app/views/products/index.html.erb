@@ -1,6 +1,7 @@
 <h2>Produtos</h2>
 
 <h5><%= link_to 'Criar produto', new_product_path %></h5>
+
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr> 
@@ -8,21 +9,27 @@
             <th> Status </th>
             <th> Categoria </th>
             <th> Editar </th>
+            <th> Desativar </th>
         </tr> 
     </thead>
     <tbody> 
-    <tr>
         <% if @products.blank? %>
             <tr>
                 <td>não existem produtos</td>
             </tr>
         <% else %>
             <% @products.each do |product| %>
-                <tr>
+                <tr id = "<%= product.id%>">
                     <td><%= link_to product.name, product_path(product.id) %></td>
-                    <td><%= state(product.state) %></td>
+                    <td class="state"><%= state(product.state) %></td>
                     <td><%= product.category.name %></td>
                     <td><%= link_to 'Editar', edit_product_path(product.id)  %></td>
+                    <td class="state_link">
+                        <%= link_to change_state(product.state), 
+                            update_state_product_path(product.id), 
+                            method: :post, 
+                            remote: true %>
+                    </td>
                 </tr>
             <% end %>
         <% end %>
